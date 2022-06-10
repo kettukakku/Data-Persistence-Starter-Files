@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour
 {
+    private SaveManager saveManager;
+    
     public Brick BrickPrefab;
     public int LineCount = 6;
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text NameText;
     public GameObject GameOverText;
     
     private bool m_Started = false;
@@ -36,6 +39,8 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
+
+        SetNameText();
     }
 
     private void Update()
@@ -66,11 +71,26 @@ public class MainManager : MonoBehaviour
     {
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
+        SaveManager.Instance.score = m_Points;
+        SetNameText();
+    }
+
+    public void SetNameText()
+    {      
+        if(!SaveManager.Instance.HasHighScore())
+        {
+            NameText.text = "Good luck!"; 
+        }
+        else
+        {
+            NameText.text = "Highscore: " + SaveManager.Instance.savedScore.nameText + ":" + SaveManager.Instance.savedScore.score;
+        }
     }
 
     public void GameOver()
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        SaveManager.Instance.SaveHighScore(SaveManager.Instance.nameText, SaveManager.Instance.score);
     }
 }
