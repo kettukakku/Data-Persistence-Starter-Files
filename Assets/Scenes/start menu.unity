@@ -1558,6 +1558,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SaveManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6825085556423919471, guid: 2fc9b48aebfe46740899c599b7668e72, type: 3}
+      propertyPath: savedScore
+      value: 
+      objectReference: {fileID: 11400000, guid: 6be86fa7cd5c266469e59492a642eb15, type: 2}
+    - target: {fileID: 6825085556423919471, guid: 2fc9b48aebfe46740899c599b7668e72, type: 3}
+      propertyPath: currentScore
+      value: 
+      objectReference: {fileID: 11400000, guid: 6be86fa7cd5c266469e59492a642eb15, type: 2}
     - target: {fileID: 6825085556423919472, guid: 2fc9b48aebfe46740899c599b7668e72, type: 3}
       propertyPath: m_RootOrder
       value: 0
